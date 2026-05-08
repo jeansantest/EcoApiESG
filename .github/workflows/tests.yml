@@ -1,0 +1,22 @@
+name: Testes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configurar Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Executar testes
+        run: mvn test
